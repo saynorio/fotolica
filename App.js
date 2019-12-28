@@ -1,19 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+import Router from 'src/Utilities/Router';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Fotolica</Text>
-    </View>
-  );
+class App extends Component {
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                <Router />
+            </View>
+        );
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
