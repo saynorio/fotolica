@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -17,6 +18,10 @@ class HomeScreen extends Component {
             })
     }
 
+    goToAlbumScreen(id){
+        Actions.albumScreen({id: id})
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -24,6 +29,7 @@ class HomeScreen extends Component {
                     data={this.state.usersList}
                     renderItem={({ item }) =>
                         <TouchableOpacity
+                        onPress={() => this.goToAlbumScreen(item.id)}
                         >
                             <Text style={styles.item}>{item.name}
                             </Text>
