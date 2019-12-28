@@ -1,35 +1,29 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 
-class AlbumScreen extends Component {
+class PhotoScreen extends Component {
     constructor(props) {
         super(props)
-        console.log("This is the props...............", this.props.id);
-        this.state = {userId: this.props.id, albumList: []}
+        this.state = { albumId: this.props.albumId, photoList: [] }
     }
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/albums?userId=' + this.state.userId)
-        .then(response => response.json())
-        .then(result => {
-            this.setState({ albumList: result })
-            console.log(result)
-        })
-    }
-
-    goToPhotoScreen(id){
-        Actions.photoScreen({albumId: id});
+        fetch('https://jsonplaceholder.typicode.com/photos?albumId=' + this.state.albumId)
+            .then(response => response.json())
+            .then(result => {
+                this.setState({ photoList: result })
+                console.log(result)
+            })
     }
 
     render() {
         return (
             <View style={styles.container}>
-              <FlatList
-                    data={this.state.albumList}
+                <FlatList
+                    data={this.state.photoList}
                     renderItem={({ item }) =>
                         <TouchableOpacity
-                        onPress={() => {this.goToPhotoScreen(item.id)}}
+                            onPress={() => {}}
                         >
                             <Text style={styles.item}>{item.title}
                             </Text>
@@ -57,5 +51,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AlbumScreen;
+export default PhotoScreen;
 
