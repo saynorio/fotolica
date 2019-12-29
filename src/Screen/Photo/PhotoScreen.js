@@ -6,7 +6,8 @@ class PhotoScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            albumId: this.props.albumId, photoList: [],
+            albumId: this.props.albumId,
+            photoList: [],
             modalVisible: false,
             images: [{
                 url: '',
@@ -42,17 +43,25 @@ class PhotoScreen extends Component {
                 <FlatList
                     data={this.state.photoList}
                     renderItem={({ item }) =>
-                        <TouchableOpacity
-                            onPress={() => { }}
-                        >
+                        <TouchableOpacity onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible, item.url);
+                        }}>
                             <Image
-                                style={{ width: 250, height: 250 }}
+                                style={{ width: 300, height: 300 }}
                                 source={{ uri: item.url }}
-                            />
+                            >
+                            </Image>
                         </TouchableOpacity>
+
                     }
                     keyExtractor={(item, index) => index}
                 />
+                <Modal style={styles.modalImage}
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}>
+                    <ImageViewer imageUrls={this.state.images} />
+                </Modal>
             </View>
         );
     }
@@ -74,7 +83,14 @@ const styles = StyleSheet.create({
     image: {
         height: 300,
         width: 300
+    },
+    modalImage: {
+        bottom: 0,
+        marginBottom: 0,
+        paddingBottom: 0,
+        backgroundColor: '#000000',
     }
+
 });
 
 export default PhotoScreen;
