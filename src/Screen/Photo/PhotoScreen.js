@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar, Dimensions, BackHandler, Platform } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
-import { Actions } from 'react-native-router-flux';
+import styles from './photo';
 
-let deviceWidth = Dimensions.get('window').width
 
 class PhotoScreen extends Component {
     constructor(props) {
@@ -56,10 +55,10 @@ class PhotoScreen extends Component {
                             this.setModalVisible(!this.state.modalVisible, item.url);
 
                         }}
-                            style={{ height: deviceWidth / 2, width: deviceWidth }}
+                            style={styles.imageview}
                         >
                             <Image
-                                style={{ flex: 1, width: undefined, height: undefined }}
+                                style={styles.image}
                                 source={{ uri: item.url }}
                             >
                             </Image>
@@ -72,13 +71,13 @@ class PhotoScreen extends Component {
                     transparent={false}
                     visible={this.state.modalVisible}>
 
-                    <TouchableOpacity style={{ backgroundColor: 'black' }}
+                    <TouchableOpacity
                         onPress={() => {
                             this.setModalVisible(!this.state.modalVisible);
                         }}>
-                        <View style={{ alignItems: 'flex-end', padding: 15, backgroundColor: 'black' }}>
+                        <View style={styles.crossimageview}>
                             <Image
-                                style={{ width: 30, height: 30 }}
+                                style={styles.crossimage}
                                 source={require('/home/abdul/fotolica/assets/cross3.jpg')}
                             >
                             </Image>
@@ -91,38 +90,5 @@ class PhotoScreen extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 60,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-    },
-    image: {
-        height: 300,
-        width: 300
-    },
-    modalImage: {
-        bottom: 0,
-        marginBottom: 0,
-        paddingBottom: 0,
-        backgroundColor: '#000000',
-    },
-    photoview : {
-        marginBottom: 20
-    },
-    photostext: {
-        fontSize: 40,
-        fontWeight: "bold",
-        color: 'blue',
-    },
-
-});
 
 export default PhotoScreen;
