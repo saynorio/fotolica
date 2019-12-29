@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import styles from './album';
 
 class AlbumScreen extends Component {
     constructor(props) {
@@ -48,37 +49,6 @@ class AlbumScreen extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 60,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    albumview: {
-        marginBottom: 20
-    },
-    albumtext: {
-        fontSize: 40,
-        fontWeight: "bold",
-        color: 'blue',
-    },
-    itemview: {
-        padding: 10,
-        height: 70,
-        width: 350,
-        marginBottom: 5,
-        borderColor: 'black',
-        borderWidth: 1,
-        borderRadius: 5,
-    },
-    itemtext: {
-        fontSize: 18,
-        fontWeight: "bold",
-    }
-});
 
 export default AlbumScreen;
 
