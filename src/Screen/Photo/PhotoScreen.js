@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar, Dimensions, BackHandler, Platform } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
+import { Actions } from 'react-native-router-flux';
+
+let deviceWidth = Dimensions.get('window').width
 
 class PhotoScreen extends Component {
     constructor(props) {
@@ -40,19 +43,27 @@ class PhotoScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View>
+                    <Text style={styles.photostext}>
+                        Photos
+                    </Text>
+                </View>
                 <FlatList
                     data={this.state.photoList}
                     renderItem={({ item }) =>
+
                         <TouchableOpacity onPress={() => {
                             this.setModalVisible(!this.state.modalVisible, item.url);
-                        }}>
+
+                        }}
+                            style={{ height: deviceWidth / 2, width: deviceWidth }}
+                        >
                             <Image
-                                style={{ width: 300, height: 300 }}
+                                style={{ flex: 1, width: undefined, height: undefined }}
                                 source={{ uri: item.url }}
                             >
                             </Image>
                         </TouchableOpacity>
-
                     }
                     keyExtractor={(item, index) => index}
                 />
@@ -61,18 +72,18 @@ class PhotoScreen extends Component {
                     transparent={false}
                     visible={this.state.modalVisible}>
 
-                    <TouchableHighlight style={{ backgroundColor: 'black' }}
+                    <TouchableOpacity style={{ backgroundColor: 'black' }}
                         onPress={() => {
                             this.setModalVisible(!this.state.modalVisible);
                         }}>
-                        <View style={{alignItems: 'flex-end', padding: 10, backgroundColor: 'black'}}>
+                        <View style={{ alignItems: 'flex-end', padding: 15, backgroundColor: 'black' }}>
                             <Image
-                                style={{ width: 20, height: 20 }}
-                                source={require('/home/abdul/fotolica/assets/cross.png')}
+                                style={{ width: 30, height: 30 }}
+                                source={require('/home/abdul/fotolica/assets/cross3.jpg')}
                             >
                             </Image>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                     <ImageViewer imageUrls={this.state.images} />
                 </Modal>
             </View>
@@ -83,7 +94,7 @@ class PhotoScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 100,
+        paddingTop: 60,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
@@ -102,7 +113,11 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         paddingBottom: 0,
         backgroundColor: '#000000',
-    }
+    },
+    photostext: {
+        fontSize: 50,
+        color: 'blue',
+    },
 
 });
 
