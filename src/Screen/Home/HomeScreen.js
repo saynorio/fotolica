@@ -37,22 +37,28 @@ class HomeScreen extends Component {
                             onPress={() => this.goToAlbumScreen(item.id)}
                         >
                             <View style={styles.itemview}>
-                                <Text style={styles.nametext}>
-                                    {item.name}
+                                <View style={{ flexDirection: 'column' }}>
+                                    <Text style={styles.nametext}>
+                                        {item.name}
                                 </Text>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text>
-                                        city:
-                                </Text>
-                                    <Text style={styles.citytext}>
-                                        {item.address.city}
-                                    </Text>
-                                    <Text style={{paddingLeft: 5}}>
-                                        company:
-                                </Text>
-                                    <Text style={styles.citytext}>
-                                        {item.company.name}
-                                    </Text>
+                                    <View style={{ flexDirection: 'row', justifyContent: "space-between", marginTop: 5 }}>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.citylabeltext}>
+                                                city:
+                                        </Text>
+                                            <Text style={styles.citytext}>
+                                                {item.address.city}
+                                        </Text>
+                                        </View>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.companylabeltext}>
+                                                company:
+                                        </Text>
+                                            <Text style={styles.companytext}>
+                                                {item.company.name}
+                                        </Text>
+                                        </View>
+                                    </View>
                                 </View>
                             </View>
                         </TouchableOpacity>
@@ -81,20 +87,50 @@ const styles = StyleSheet.create({
     itemview: {
         padding: 10,
         height: 70,
+        width: 350,
         marginBottom: 5,
         borderColor: 'black',
         borderWidth: 1,
         borderRadius: 5,
-        flexDirection: 'column'
+    },
+    nameview: {
+
     },
     nametext: {
         fontSize: 18,
         fontWeight: "bold",
     },
-    citytext: {
+    citylabelview: {
+
+    },
+    citylabeltext: {
         fontSize: 12,
-        fontWeight: "bold",
+
+    },
+    citytextview: {
+
+    },
+    citytext: {
+        paddingLeft: 2,
+        fontSize: 12,
+        fontWeight: 'bold',
+
+    },
+    companylabelview: {
+
+    },
+    companylabeltext: {
+        fontSize: 12,
+    },
+    companytextview: {
+
+    },
+    companytext: {
+        paddingLeft: 2,
+        fontSize: 12,
+        fontWeight: 'bold'
     }
+
 });
 
 export default HomeScreen;
