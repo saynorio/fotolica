@@ -43,7 +43,7 @@ class PhotoScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View>
+                <View style={styles.photoview}>
                     <Text style={styles.photostext}>
                         Photos
                     </Text>
@@ -114,8 +114,12 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         backgroundColor: '#000000',
     },
+    photoview : {
+        marginBottom: 20
+    },
     photostext: {
-        fontSize: 50,
+        fontSize: 40,
+        fontWeight: "bold",
         color: 'blue',
     },
 

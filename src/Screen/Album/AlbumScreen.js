@@ -25,7 +25,7 @@ class AlbumScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.userview}>
+                <View style={styles.albumview}>
                     <Text style={styles.albumtext}>
                         Albums
                     </Text>
@@ -57,8 +57,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    albumview: {
+        marginBottom: 20
+    },
     albumtext: {
-        fontSize: 50,
+        fontSize: 40,
+        fontWeight: "bold",
         color: 'blue',
     },
     itemview: {
