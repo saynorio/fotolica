@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar } from 'react-native';
+import ImageViewer from 'react-native-image-zoom-viewer';
 
 class PhotoScreen extends Component {
     constructor(props) {
         super(props)
-        this.state = { albumId: this.props.albumId, photoList: [] }
+        this.state = {
+            albumId: this.props.albumId, photoList: [],
+            modalVisible: false,
+            images: [{
+                url: '',
+            }],
+        }
+        this.setModalVisible = this.setModalVisible.bind(this)
     }
 
     componentDidMount() {
@@ -12,8 +20,20 @@ class PhotoScreen extends Component {
             .then(response => response.json())
             .then(result => {
                 this.setState({ photoList: result })
-                console.log(result)
             })
+    }
+
+    setModalVisible(visible, imagePath) {
+        this.state.images = [{
+            url: imagePath,
+        }]
+        if (visible) {
+            StatusBar.setHidden(true);
+        }
+        if (!visible) {
+            StatusBar.setHidden(false);
+        }
+        this.setState({ modalVisible: visible });
     }
 
     render() {
@@ -23,10 +43,12 @@ class PhotoScreen extends Component {
                     data={this.state.photoList}
                     renderItem={({ item }) =>
                         <TouchableOpacity
-                            onPress={() => {}}
+                            onPress={() => { }}
                         >
-                            <Text style={styles.item}>{item.title}
-                            </Text>
+                            <Image
+                                style={{ width: 250, height: 250 }}
+                                source={{ uri: item.url }}
+                            />
                         </TouchableOpacity>
                     }
                     keyExtractor={(item, index) => index}
@@ -48,6 +70,10 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 18,
         height: 44,
+    },
+    image: {
+        height: 300,
+        width: 300
     }
 });
 
