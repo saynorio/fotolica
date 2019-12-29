@@ -1,41 +1,103 @@
+// import React, { Component } from 'react';
+// import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+// import { Actions } from 'react-native-router-flux';
+
+// class SplashScreen extends Component {
+//   constructor(props) {
+//     super(props);
+//   }
+
+//   componentDidMount() {
+//     console.ignoredYellowBox = ['Remote debugger'];
+//     console.disableYellowBox = true;
+//   }
+
+//   gotoHomeScreen() {
+//     Actions.homeScreen();
+//   }
+
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <TouchableOpacity
+//           onPress={() => this.gotoHomeScreen()}
+//         >
+//           <Text>Welcome to fotolica</Text>
+//         </TouchableOpacity>
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
+
+// export default SplashScreen;
+
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
+import Styles from "./splash";
+import * as Progress from 'react-native-progress';
 import { Actions } from 'react-native-router-flux';
 
-class SplashScreen extends Component{
+export default class SplashScreen extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            progress: 0,
+        }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         console.ignoredYellowBox = ['Remote debugger'];
         console.disableYellowBox = true;
+        this.showProgressAndGoToNextScreen();
     }
 
-    gotoHomeScreen(){
+    async showProgressAndGoToNextScreen() {
+        await this.asyncAnimate(200)
         Actions.homeScreen();
     }
+  
+    asyncAnimate(wait) {
+        let progress = 0;
+        let promise = new Promise((resolve) => {
+            setInterval(() => {
+                progress += Math.random();
+                if (progress > 1) {
+                    progress = 1;
+                    resolve(null)
+                }
+                this.setState({ progress });
+            }, wait)
+        })
+        return promise
+    }
 
-    render(){
-    return (
-    <View style={styles.container}>
-        <TouchableOpacity
-        onPress={() => this.gotoHomeScreen()}
-        >
-      <Text>Welcome to fotolica</Text>
-      </TouchableOpacity>
-    </View>
-  );
- }
+    render() {
+        return (
+            <View style={styles.maincontainer}>
+                <View style={styles.container}>
+                    <Text style={styles.text}>
+                        Fotolica
+                    </Text>
+                </View>
+                <Progress.Bar
+                    style={styles.progress}
+                    progress={this.state.progress}
+                    color={'#2B65EC'}
+                    borderRadius={1}
+                    width={170}
+                />
+            </View>
+        )
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default SplashScreen;
+const styles = Styles
