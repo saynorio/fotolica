@@ -60,6 +60,19 @@ class PhotoScreen extends Component {
                     animationType="slide"
                     transparent={false}
                     visible={this.state.modalVisible}>
+
+                    <TouchableHighlight style={{ backgroundColor: 'black' }}
+                        onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                        }}>
+                        <View style={{alignItems: 'flex-end', padding: 10, backgroundColor: 'black'}}>
+                            <Image
+                                style={{ width: 20, height: 20 }}
+                                source={require('/home/abdul/fotolica/assets/cross.png')}
+                            >
+                            </Image>
+                        </View>
+                    </TouchableHighlight>
                     <ImageViewer imageUrls={this.state.images} />
                 </Modal>
             </View>

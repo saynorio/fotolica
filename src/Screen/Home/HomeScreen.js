@@ -18,21 +18,43 @@ class HomeScreen extends Component {
             })
     }
 
-    goToAlbumScreen(id){
-        Actions.albumScreen({id: id})
+    goToAlbumScreen(id) {
+        Actions.albumScreen({ id: id })
     }
 
     render() {
         return (
             <View style={styles.container}>
+                <View style={styles.userview}>
+                    <Text style={styles.usertext}>
+                        Users
+                    </Text>
+                </View>
                 <FlatList
                     data={this.state.usersList}
                     renderItem={({ item }) =>
                         <TouchableOpacity
-                        onPress={() => this.goToAlbumScreen(item.id)}
+                            onPress={() => this.goToAlbumScreen(item.id)}
                         >
-                            <Text style={styles.item}>{item.name}
-                            </Text>
+                            <View style={styles.itemview}>
+                                <Text style={styles.nametext}>
+                                    {item.name}
+                                </Text>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Text>
+                                        city:
+                                </Text>
+                                    <Text style={styles.citytext}>
+                                        {item.address.city}
+                                    </Text>
+                                    <Text style={{paddingLeft: 5}}>
+                                        company:
+                                </Text>
+                                    <Text style={styles.citytext}>
+                                        {item.company.name}
+                                    </Text>
+                                </View>
+                            </View>
                         </TouchableOpacity>
                     }
                     keyExtractor={(item, index) => index}
@@ -50,10 +72,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    item: {
+    userview: {
+    },
+    usertext: {
+        fontSize: 50,
+        color: 'blue',
+    },
+    itemview: {
         padding: 10,
+        height: 70,
+        marginBottom: 5,
+        borderColor: 'black',
+        borderWidth: 1,
+        borderRadius: 5,
+        flexDirection: 'column'
+    },
+    nametext: {
         fontSize: 18,
-        height: 44,
+        fontWeight: "bold",
+    },
+    citytext: {
+        fontSize: 12,
+        fontWeight: "bold",
     }
 });
 
