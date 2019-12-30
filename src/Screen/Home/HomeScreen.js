@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styles from './home';
+import HomeController from './HomeController';
+
+const homeController = new HomeController();
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -9,14 +12,19 @@ class HomeScreen extends Component {
         this.state = { usersList: [] }
     }
 
+    async getUsersData() {
+        try {
+            let data = await homeController.fetchUsersDataFromAPI()
+            this.setState({ usersList: data })
+        } catch (err) {
+            console.log("error", err)
+            return;
+
+        }
+    }
+
     componentDidMount() {
-        console.log("I am inside componentDidMount");
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(result => {
-                this.setState({ usersList: result })
-                console.log(result)
-            })
+        this.getUsersData()
     }
 
     goToAlbumScreen(id) {

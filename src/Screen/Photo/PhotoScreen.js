@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar, Dimensions, BackHandler, Platform } from 'react-native';
+import {  Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar, BackHandler, Platform } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import styles from './photo';
-
 
 class PhotoScreen extends Component {
     constructor(props) {
