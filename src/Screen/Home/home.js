@@ -27,12 +27,8 @@ const styles = {
         fontSize: 18,
         fontWeight: "bold",
     },
-    citylabelview: {
-
-    },
     citylabeltext: {
         fontSize: 12,
-
     },
     citytext: {
         paddingLeft: 2,

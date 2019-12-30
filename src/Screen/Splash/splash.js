@@ -1,4 +1,3 @@
-
 const styles = ({
     maincontainer: {
         flex: 1,

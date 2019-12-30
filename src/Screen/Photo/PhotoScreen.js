@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar, BackHandler, Platform } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity, Image, Modal, StatusBar } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import styles from './photo';
 import PhotoController from './PhotoController';
@@ -26,15 +26,13 @@ class PhotoScreen extends Component {
         } catch (err) {
             console.log("error", err)
             return;
-
         }
     }
 
     componentDidMount() {
         this.showPhotoData()
     }
-
-
+    
     setModalVisible(visible, imagePath) {
         this.state.images = [{
             url: imagePath,

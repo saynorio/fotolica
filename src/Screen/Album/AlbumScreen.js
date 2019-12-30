@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styles from './album';
 import AlbumController from './AlbumController';
@@ -18,7 +18,6 @@ class AlbumScreen extends Component {
         } catch (err) {
             console.log("error", err)
             return;
-
         }
     }
 
