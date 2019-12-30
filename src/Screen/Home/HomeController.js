@@ -3,7 +3,7 @@ import API from "src/RESTAPIs/API.js"
 var api = new API();
 
 export default class HomeController {
-    async fetchUsersDataFromAPI() {
+    async fetchUserDataFromAPI() {
         let promise = new Promise(async (resolve, reject) => {
             const urlToAppend = 'users';
             try {

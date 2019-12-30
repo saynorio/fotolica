@@ -12,9 +12,9 @@ class HomeScreen extends Component {
         this.state = { usersList: [] }
     }
 
-    async getUsersData() {
+    async getShowUserData() {
         try {
-            let data = await homeController.fetchUsersDataFromAPI()
+            let data = await homeController.fetchUserDataFromAPI()
             this.setState({ usersList: data })
         } catch (err) {
             console.log("error", err)
@@ -24,7 +24,7 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        this.getUsersData()
+        this.getShowUserData()
     }
 
     goToAlbumScreen(id) {

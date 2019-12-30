@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {  Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar, BackHandler, Platform } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity, Image, Modal, TouchableHighlight, StatusBar, BackHandler, Platform } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import styles from './photo';
+import PhotoController from './PhotoController';
+const photoController = new PhotoController();
 
 class PhotoScreen extends Component {
     constructor(props) {
@@ -17,13 +19,21 @@ class PhotoScreen extends Component {
         this.setModalVisible = this.setModalVisible.bind(this)
     }
 
-    componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/photos?albumId=' + this.state.albumId)
-            .then(response => response.json())
-            .then(result => {
-                this.setState({ photoList: result })
-            })
+    async showPhotoData() {
+        try {
+            let data = await photoController.fetchPhotoDataFromAPI(this.state.albumId)
+            this.setState({ photoList: data })
+        } catch (err) {
+            console.log("error", err)
+            return;
+
+        }
     }
+
+    componentDidMount() {
+        this.showPhotoData()
+    }
+
 
     setModalVisible(visible, imagePath) {
         this.state.images = [{
