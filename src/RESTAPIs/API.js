@@ -1,16 +1,16 @@
-const baseUrl = 'https://jsonplaceholder.typicode.com/'
-
 class API {
-    GET = function (urlToAppend) {
+    GET = async function (urlToAppend) {
+        const baseUrl = 'https://jsonplaceholder.typicode.com/'
         const completeUrl = baseUrl.concat("", urlToAppend);
-        return fetch(completeUrl)
-            .then((response) => response.json())
-            .then((responseJson) => {
-                return responseJson;
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        try {
+            const response = await fetch(completeUrl);
+            const responseJson = await response.json();
+            return responseJson;
+        }
+        catch (error) {
+            console.error(error);
+        }
     }
 }
+
 export default API; 

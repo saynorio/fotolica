@@ -11,9 +11,7 @@ class PhotoScreen extends Component {
             albumId: this.props.albumId,
             photoList: [],
             modalVisible: false,
-            images: [{
-                url: '',
-            }],
+            images: [{ url: '', }]
         }
         this.setModalVisible = this.setModalVisible.bind(this)
     }

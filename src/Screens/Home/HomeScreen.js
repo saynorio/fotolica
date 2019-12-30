@@ -18,7 +18,6 @@ class HomeScreen extends Component {
         } catch (err) {
             console.log("error", err)
             return;
-
         }
     }
 

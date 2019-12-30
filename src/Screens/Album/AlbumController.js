@@ -1,9 +1,8 @@
 import API from "src/RESTAPIs/API.js"
 
-var api = new API();
-
 export default class AlbumController {
     async fetchAlbumDataFromAPI(userId) {
+        let api = new API();
         let promise = new Promise(async (resolve, reject) => {
             const urlToAppend = 'albums?userId=' + userId;
             try {
