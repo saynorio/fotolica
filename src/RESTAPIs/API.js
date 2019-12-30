@@ -11,7 +11,6 @@ class API {
             .catch((error) => {
                 console.error(error);
             });
-
     }
 }
 export default API; 

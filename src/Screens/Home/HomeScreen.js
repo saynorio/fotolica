@@ -4,15 +4,14 @@ import { Actions } from 'react-native-router-flux';
 import styles from './home';
 import HomeController from './HomeController';
 
-const homeController = new HomeController();
-
 class HomeScreen extends Component {
     constructor(props) {
         super(props)
         this.state = { usersList: [] }
     }
 
-    async getShowUserData() {
+    async showUserData() {
+        const homeController = new HomeController();
         try {
             let data = await homeController.fetchUserDataFromAPI()
             this.setState({ usersList: data })
@@ -24,7 +23,7 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        this.getShowUserData()
+        this.showUserData()
     }
 
     goToAlbumScreen(id) {

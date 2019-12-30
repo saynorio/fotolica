@@ -23,6 +23,7 @@ export default class SplashScreen extends Component {
         Actions.homeScreen();
     }
   
+    // Function to calculate animation progress
     asyncAnimate(wait) {
         let progress = 0;
         let promise = new Promise((resolve) => {

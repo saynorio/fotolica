@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import Router from 'src/Utilities/Router';
 
+// First component of the app
 class App extends Component {
     render() {
         return (

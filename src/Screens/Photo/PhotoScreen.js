@@ -3,7 +3,6 @@ import { Text, View, FlatList, TouchableOpacity, Image, Modal, StatusBar } from 
 import ImageViewer from 'react-native-image-zoom-viewer';
 import styles from './photo';
 import PhotoController from './PhotoController';
-const photoController = new PhotoController();
 
 class PhotoScreen extends Component {
     constructor(props) {
@@ -20,6 +19,7 @@ class PhotoScreen extends Component {
     }
 
     async showPhotoData() {
+        const photoController = new PhotoController();
         try {
             let data = await photoController.fetchPhotoDataFromAPI(this.state.albumId)
             this.setState({ photoList: data })
@@ -32,7 +32,8 @@ class PhotoScreen extends Component {
     componentDidMount() {
         this.showPhotoData()
     }
-    
+
+    // function to show Image in full screen
     setModalVisible(visible, imagePath) {
         this.state.images = [{
             url: imagePath,
@@ -85,7 +86,7 @@ class PhotoScreen extends Component {
                         <View style={styles.crossimageview}>
                             <Image
                                 style={styles.crossimage}
-                                source={require('/home/abdul/fotolica/assets/cross3.jpg')}
+                                source={require('/home/abdul/fotolica/assets/cross.jpg')}
                             >
                             </Image>
                         </View>
@@ -96,6 +97,5 @@ class PhotoScreen extends Component {
         );
     }
 }
-
 
 export default PhotoScreen;

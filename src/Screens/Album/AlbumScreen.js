@@ -3,7 +3,6 @@ import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styles from './album';
 import AlbumController from './AlbumController';
-const albumController = new AlbumController();
 
 class AlbumScreen extends Component {
     constructor(props) {
@@ -12,6 +11,7 @@ class AlbumScreen extends Component {
     }
 
     async showAlbumData() {
+        const albumController = new AlbumController();
         try {
             let data = await albumController.fetchAlbumDataFromAPI(this.state.userId)
             this.setState({ albumList: data })

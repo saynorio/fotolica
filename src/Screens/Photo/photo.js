@@ -34,7 +34,19 @@ const styles = {
         color: 'blue',
     },
     imageview: {
-        height: deviceWidth / 2, width: deviceWidth
+        height: deviceWidth / 2, width: deviceWidth,
+        backgroundColor: 'red',
+        padding: 5,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: '#ddd',
+        shadowColor: '#222',
+        shadowOffset: { width: 1, height: 1 },
+        shadowOpacity: 0.25,
+        shadowRadius: 2,
+        elevation: 2,
+        backgroundColor: '#FFFFFF',
+        overflow: 'hidden',
     },
     image: {
         flex: 1, width: undefined, height: undefined
