@@ -1,9 +1,9 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
-import SplashScreen from 'src/Screen/Splash/SplashScreen.js';
-import HomeScreen from 'src/Screen/Home/HomeScreen.js';
-import AlbumScreen from 'src/Screen/Album/AlbumScreen.js';
-import PhotoScreen from 'src/Screen/Photo/PhotoScreen.js';
+import SplashScreen from 'src/Screens/Splash/SplashScreen.js';
+import HomeScreen from 'src/Screens/Home/HomeScreen.js';
+import AlbumScreen from 'src/Screens/Album/AlbumScreen.js';
+import PhotoScreen from 'src/Screens/Photo/PhotoScreen.js';
 
 const RouterComponent = () => {
     return (

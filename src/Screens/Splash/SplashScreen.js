@@ -19,7 +19,7 @@ export default class SplashScreen extends Component {
     }
 
     async showProgressAndGoToNextScreen() {
-        await this.asyncAnimate(200)
+        await this.asyncAnimate(2000)
         Actions.homeScreen();
     }
   
