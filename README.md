@@ -17,14 +17,15 @@ Make sure you have following things available on your system
 
 ## Screenshots
 
-![Screenshot_20191231-114737](https://user-images.githubusercontent.com/39700052/71612850-e0017e00-2bc4-11ea-9eee-39949228c145.png)
+<img src="https://user-images.githubusercontent.com/39700052/71614044-70db5800-2bcb-11ea-989f-489d0f530954.png" width="59">
 
-![Screenshot_20191231-114741](https://user-images.githubusercontent.com/39700052/71612912-379fe980-2bc5-11ea-994d-c5c70b381a4b.png)
-![Screenshot_20191231-114753](https://user-images.githubusercontent.com/39700052/71612921-47b7c900-2bc5-11ea-8439-e1f67d7634a9.png)
+<img src="https://user-images.githubusercontent.com/39700052/71614056-7638a280-2bcb-11ea-839c-58cffec92a10.png" width="50">
 
-![Screenshot_20191231-114748](https://user-images.githubusercontent.com/39700052/71612916-41c1e800-2bc5-11ea-9b77-1d38ca94bdef.png)
-![Screenshot_20191231-114757](https://user-images.githubusercontent.com/39700052/71612928-4dadaa00-2bc5-11ea-884b-a3fb304763d4.png)
+<img src="https://user-images.githubusercontent.com/39700052/71614058-79339300-2bcb-11ea-8d85-08e6693696bf.png" width="300">
 
-![Screenshot_20191231-114757](https://user-images.githubusercontent.com/39700052/71612930-4eded700-2bc5-11ea-85a5-a6d3dab557eb.png)
+<img src="https://user-images.githubusercontent.com/39700052/71614059-7b95ed00-2bcb-11ea-939d-20ca4e2acd42.png" width="300">
+
+<img src="https://user-images.githubusercontent.com/39700052/71614061-7df84700-2bcb-11ea-9e9d-049a3a6c3cd8.png" width="300">
+
 
 *Note this project is tested only on Android device though it can run on iOS as well
